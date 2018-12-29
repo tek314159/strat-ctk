@@ -1,0 +1,14 @@
+.mapcell {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.container {
+    margin: 50px;
+}
+
+.column {
+    display: inline-block;
+    width: 300px;
+}
