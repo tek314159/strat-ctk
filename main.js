@@ -1,4 +1,5 @@
 //main.js
+//git lab is 'origami'; github is 'origin'
 
 var mainCol = document.getElementById('maincol');
 const miniMapHeight = 12;
@@ -58,59 +59,72 @@ function fillMiniMap() {
     }
 }
 
-document.addEventListener('keydown', (event) => {
-    switch (event.key) {
-        case 'w': 
-            player.changePosition(0,-1);
-            refreshDisplay();
-            break;
-        case 'a':
-            player.changePosition(-1,0);
-            refreshDisplay();
-            break;
-        case 's':
-            player.changePosition(0,1);
-            refreshDisplay();
-            break;
-        case 'd':
-            player.changePosition(1,0);
-            refreshDisplay();
-            break;
-    }
-    switch (event.keyCode) {
-        case 37: // left arrow
-            player.changePosition(-1,0);
-            refreshDisplay();
-            break;
-        case 38: // up arrow
-            player.changePosition(0,-1);
-            refreshDisplay();
-            break;
-        case 39: // right arrow
-            player.changePosition(1,0);
-            refreshDisplay();
-            break;
-        case 40: // down arrow
-            player.changePosition(0,1);
-            refreshDisplay();
-            break;
-    }
-})
+function keyControls() {
+    document.addEventListener('keydown', (event) => {
+        switch (event.key) {
+            case 'w': 
+                player.changePosition(0,-1);
+                refreshDisplay();
+                break;
+            case 'a':
+                player.changePosition(-1,0);
+                refreshDisplay();
+                break;
+            case 's':
+                player.changePosition(0,1);
+                refreshDisplay();
+                break;
+            case 'd':
+                player.changePosition(1,0);
+                refreshDisplay();
+                break;
+        }
+        switch (event.keyCode) {
+            case 37: // left arrow
+                player.changePosition(-1,0);
+                refreshDisplay();
+                break;
+            case 38: // up arrow
+                player.changePosition(0,-1);
+                refreshDisplay();
+                break;
+            case 39: // right arrow
+                player.changePosition(1,0);
+                refreshDisplay();
+                break;
+            case 40: // down arrow
+                player.changePosition(0,1);
+                refreshDisplay();
+                break;
+        }
+    })
+}
 
 function setupGame() {
     fillMiniMap();
+    $("#leftcol").html("loaded");
+    $("#rightcol").html("");
+    $("#rightcol").append("<div id='minmap'></div>");
+    var minMap = document.getElementById('minmap');
+    minMap.addEventListener('mouseenter', function(event) {
+        // highlight the mouseenter target
+        event.target.style.color = "purple";
+    }, false);
+    minMap.addEventListener('mouseleave', function(event) {
+        // highlight the mouseenter target
+        event.target.style.color = "";
+    }, false);
     refreshDisplay();
+    keyControls();
 }
 
 function refreshDisplay() {
-
-    $("#leftcol").html("loaded");
-    $("#rightcol").html("");
-    $("#rightcol").append(renderMap(miniMap));
+    $("#minmap").html("");
+    $("#minmap").append(renderMap(miniMap));
 }
 
 function renderMap(maparray) {
-    let textMap = "";
+    let textMap = "<div id='minmap'>";
     for (let i=0;i<maparray.length;i++) {
         for (let k=0;k<maparray[i].length;k++) {
             textMap += `<div class="mapcell">`
@@ -123,6 +137,7 @@ function renderMap(maparray) {
         }
         textMap += "<br>";
     }
+    textMap += "</div>"
     return textMap;
 }
 
