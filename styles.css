@@ -1,7 +1,7 @@
 .mapcell {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
 }
 
 .container {
@@ -10,5 +10,5 @@
 
 .column {
     display: inline-block;
-    width: 300px;
+    width: 500px;
 }
