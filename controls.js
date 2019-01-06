@@ -40,7 +40,13 @@ function keyControls() {
 }
 
 var controlHandler = {
+    controlDomain: 'miniMap',
     controlInput(input) {
+        if (this.controlDomain == 'miniMap') {
+            this.mapSelector(input);
+        }
+    },
+    mapSelector(input) {
         switch (input) {
             case 'up':
                 cursor.changePosition(0,-1);
@@ -62,5 +68,6 @@ var controlHandler = {
                 break;
         }
         refreshDisplay();
-    }
+    },
+
 }

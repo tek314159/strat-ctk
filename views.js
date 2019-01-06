@@ -13,10 +13,12 @@ function renderMap(maparray) {
             if (cursor.position[0] == k && cursor.position[1] == i) {
                 textMap += '[';
             }
-            if (player.position[0] == k && player.position[1] == i) {
-                textMap += `<strong>${player.icon}</strong>`;
-            } else {
-                textMap += maparray[i][k];
+            for (let m=0;m<gameObjectArray.length;m++) {
+                if (gameObjectArray[m].position[0] == k && gameObjectArray[m].position[1] == i) {
+                    textMap += `<strong>${gameObjectArray[m].icon}</strong>`;
+                } else {
+                    textMap += maparray[i][k];
+                }
             }
             if (cursor.position[0] == k && cursor.position[1] == i) {
                 textMap += ']';

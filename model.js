@@ -4,11 +4,12 @@ const miniMapHeight = 12;
 const miniMapWidth = 12;
 
 const miniMap = [];
+var gameObjectArray = [];
 
-var gameObject = function (icon) {
+var gameObject = function (icon, x, y) {
     this.icon = icon;
     this.currentMap = miniMap;
-    this.position = [0,0]
+    this.position = [x,y]
 }
 
 gameObject.prototype.getPosition = function() {
@@ -82,5 +83,31 @@ cursorType.prototype.changePosition = function(x, y) {
     }
 }
 
-var player = new gameObject('x');
+function randomInt(min, max) {
+    let result = Math.floor(Math.random()*(max-min+1)) + min;
+    return result;
+}
+
+function createRandomObjects() {
+    let randomX = randomInt
+    let p = new gameObject('x',0,1);
+    console.log(p);
+    gameObjectArray.push(p);
+}
+
+function testRandoFunction() {
+    let maxInt = 25;
+    let minInt = 7;
+    let iterations = 10000;
+    let listArray = [];
+    for (let k=minInt;k<=maxInt;k++) {
+        listArray[k]=0;
+    }
+    for (let i=0;i<iterations;i++) {
+        let r = randomInt(minInt, maxInt);
+        listArray[r] += 1;
+    }
+    console.log(listArray);
+}
+testRandoFunction();
 var cursor = new cursorType();

@@ -14,6 +14,7 @@ function fillMiniMap() {
 
 function setupGame() {
     fillMiniMap();
+    createRandomObjects();
     $("#leftcol").html("loaded");
     $("#rightcol").html("");
     $("#rightcol").append("<div id='minmap'></div>");
